@@ -1,5 +1,3 @@
-
-
 # ASUS TUF Gaming F16 (Raptor Lake-H) Hackintosh EFI
 
 [![macOS Sequoia](https://img.shields.io/badge/macOS-Sequoia_15.8.3-blue?style=flat-square&logo=apple)](https://developer.apple.com/macos/)
@@ -48,9 +46,14 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 | **GPU — Metal / Vulkan** | **46.827** *(Vulkan)* | **45.135** *(Metal)* | Only **%3.6** performance delta! |
 | **GPU — OpenCL** | **48.652** | **26.984** | Apple deprecated OpenCL stack overhead |
 
-> *💡 Note: Benchmark screenshots (Windows and macOS scorecards) are placed inside the repository's `screenshots/` directory and visually displayed below.*
+> *💡 Note: Benchmark and system screenshots are placed inside the repository's `screenshots/` directory and visually displayed below.*
 
-### Benchmark Screenshots
+### System & Benchmark Screenshots
+
+#### About This Mac
+| macOS Sequoia 15.8.3 Overview |
+| :---: |
+| ![About This Mac](screenshots/about-this-mac.png) |
 
 #### CPU Comparison
 | Windows 11 | macOS Sequoia 15.8.3 |
@@ -58,7 +61,7 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 | ![Windows CPU](screenshots/win11-cpu.png) | ![macOS CPU](screenshots/macos-cpu.png) |
 
 #### GPU Comparison
-| Windows 11 (Vulkan) | macOS Sequoia 15.8.3 (Metal) |
+| Windows 11 (Vulkan / OpenCL) | macOS Sequoia 15.8.3 (Metal / OpenCL) |
 | :---: | :---: |
 | ![Windows GPU](screenshots/win11-gpu-vulkan.png) | ![macOS GPU](screenshots/macos-gpu-metal.png) |
 
