@@ -27,12 +27,16 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 
 ---
 
-## 🚀 Key Features & Working Components
+## 🚀 Working Components
 
-* **Metal 3 Acceleration:** Powered by `nullmoth 3.0` framework, routing native graphics calls directly to the RTX 3050 in dGPU-only mode.
-* **Power & Thermal Management:** `AsusBridge` integration combined with Armoury Crate profile management for accurate telemetry and battery limit control.
-* **Camera Support:** Built-in webcam fully functional natively via Safari (AVFoundation TCC integration).
-* **Bluetooth Audio:** Stable BT connectivity for peripherals and audio devices (note: minor reconnection after Windows switching may occur).
+* **Dedicated Graphics (dGPU):** NVIDIA GeForce RTX 3050 6GB with full Metal 3 hardware acceleration via `nullmoth 3.0`.
+* **Built-in Display:** Laptop screen running natively at full resolution and refresh rate via dGPU routing.
+* **Onboard Audio:** Built-in laptop speakers and 3.5mm headphone jack (`AppleALC`).
+* **Wi-Fi & Bluetooth:** Realtek RTL8852BE working reliably for standard home networks (WPA2/WPA3) and Bluetooth audio/peripherals.
+* **Power & Thermal Management:** CPU power management, battery percentage readout, fan telemetry, and %80 charge limit control via `AsusBridge` / `AsusSMC`.
+* **Input Devices:** Built-in keyboard (including backlight and Fn hotkeys) and precision touchpad with multi-touch gestures.
+* **USB & Storage:** All USB Type-A / Type-C ports and NVMe SSD running at full speed.
+* **Webcam:** Built-in camera working natively in Safari (AVFoundation TCC).
 
 ---
 
@@ -79,7 +83,7 @@ To boot successfully, make sure your BIOS is configured as follows:
 
 ---
 
-## ⚠️ Known Limitations, Quirks & Real-World Behavior
+## ⚠️ Known Limitations, Quirks , Real-World Behavior &Not working Components
 
 To maintain absolute transparency for anyone building on this hardware, here are the verified real-world behaviors of this EFI configuration:
 
@@ -90,6 +94,8 @@ To maintain absolute transparency for anyone building on this hardware, here are
 * **UI Glitches, About This Mac & Text Rendering:** Due to dGPU-only routing via `nullmoth` and non-native CPU reporting (shown as "Unknown"), UI elements, the *System Settings* panel, or *About This Mac* window may occasionally appear blank, experience rendering hiccups, or show dark text artifacts over light theme backgrounds.
 * **Chrome / Browser Rendering Flicker:** When switching between dark and light themes in Chromium-based browsers (Chrome), pages may momentarily flash or drop pixels on theme boundaries due to dGPU hardware acceleration handling.
 * **Dual-Boot Battery Charge Limit:** Because the battery charge limit (%80 cap) is handled by ASUS EC (Embedded Controller) firmware alongside software hooks, switching back and forth between Windows and macOS on the same single SSD environment can occasionally reset the profile state across reboots.
+* * **Intel Integrated Graphics (iGPU):** Disabled by design; requires BIOS/Armoury Crate to be set to **Ultimate / Discrete Only** mode for `nullmoth` dGPU routing.
+* **NVIDIA High Definition Audio:** Audio output over HDMI / external display ports via NVIDIA dGPU is not supported.
 
 ---
 
