@@ -76,17 +76,17 @@ With E-cores enabled in BIOS, OpenCore stopped at `EXITBS:START` and macOS never
 
 ```text
 Kernel -> Emulate
-  Before: Cpuid1Data = [old value]
-          Cpuid1Mask = [old value]
-  After:  Cpuid1Data = [new value]
-          Cpuid1Mask = [new value]
+  Before: Cpuid1Data = 55060A00000000000000000000000000
+          Cpuid1Mask = FFFFFFFF000000000000000000000000
+  After:  Cpuid1Data = 55060A00000080000000000000000000
+          Cpuid1Mask = FFFFFFFF0000FF000000000000000000
 ```
 
 [One or two sentences on why this value works or what it changes.]
 
 ## Ethernet (RTL8111)
 
-The latest `RealtekRTL8111.kext` release I downloaded did not work on macOS 15.8.x ([symptom: no link / no IP / drops]). The version bundled by OpCore Simplify, **[version number]**, works. The problematic version is **[version number]**.
+The latest `RealtekRTL8111.kext` release I downloaded did not work on macOS 15.8.3 ([symptom: no link ]). The version bundled by OpCore Simplify works. The problematic version is **3.0**.
 
 ## Benchmarks (Geekbench 7.1.0)
 
@@ -94,7 +94,7 @@ All tests were run on AC power with Armoury Crate set to Ultimate (dGPU) mode.
 
 | Test | Windows 11 | macOS Sequoia 15.8.3 (NullMoth) | macOS vs Windows |
 | --- | --- | --- | --- |
-| CPU, single-core | 1,854 | [verify macOS score] | [verify] |
+| CPU, single-core | 1,854 | 971 | %91|
 | CPU, multi-core | 8,154 | 5,643 | 69% |
 | GPU, Vulkan (Windows) / Metal (macOS) | 46,827 | 45,135 | 96% (about 3.6% lower) |
 | GPU, OpenCL | 48,652 | 26,984 | 55% |
