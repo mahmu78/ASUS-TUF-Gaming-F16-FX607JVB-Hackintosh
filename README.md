@@ -1,4 +1,5 @@
-# ASUS TUF Gaming F16 (FX607VJB, Raptor Lake-H) Hackintosh EFI
+# ASUS TUF Gaming F16 FX607JVB Hackintosh
+# Intel Core 5 210H • RTX 3050 Laptop GPU • macOS Sequoia
 
 ![macOS Sequoia](https://img.shields.io/badge/macOS-Sequoia%2015.8.3-blue) ![OpenCore](https://img.shields.io/badge/OpenCore-1.0.8-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
