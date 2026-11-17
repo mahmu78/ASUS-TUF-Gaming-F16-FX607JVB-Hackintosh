@@ -23,7 +23,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | NullMoth (NVIDIA driver) | 3.0 |
 | WhateverXe / WhateverXe Graphics | 0.8.2 / 0.4.4 (iGPU not working, see below) |
 | AsusBridge | 3.0 |
-| Realtek Gigabit Ethernet(RTL8111.kext is work) | 2.4.2, see "Ethernet" |
+| RTL8111 (Ethernet) | 2.4.2, see "Ethernet" |
 | BIOS | [version] |
 
 ## System specifications
@@ -37,7 +37,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | RAM | 8GB DDR5 5600MHz |
 | Storage | 512GB Western Digital NVMe SSD (single-disk dual boot with Windows 11) |
 | Wi-Fi / Bluetooth | Realtek RTL8852BE |
-| Ethernet | Realtek RTL8111 |
+| Ethernet | Realtek Gigabit Ethernet(RTL8111.kext worked) |
 
 ## What works
 
