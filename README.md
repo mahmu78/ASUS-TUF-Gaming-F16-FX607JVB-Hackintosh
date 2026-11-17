@@ -64,6 +64,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | VMD Controller | Disabled (or AHCI mode if supported) |
 | CFG Lock / VT-d | Handled through OpenCore quirks |
 
+Note: The setting to switch to external GPU mode can be adjusted via the BIOS; if it is not available in the BIOS, it can be configured within Windows using Armoury Crate—please check accordingly. 
 Please check these against your own BIOS before booting; names differ between BIOS versions.
 
 ## E-cores enabled: the EXITBS:START freeze
