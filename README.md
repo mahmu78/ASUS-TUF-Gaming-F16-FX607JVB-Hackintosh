@@ -6,25 +6,30 @@
 [![OpenCore](https://img.shields.io/badge/OpenCore-1.0.x-green?style=flat-square)](https://github.com/acidanthera/OpenCorePkg)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 
-A robust, fully documented, and transparent proof-of-concept Hackintosh EFI configuration for the **ASUS TUF Gaming F16 (FX607JVB)** laptop powered by Raptor Lake-H and NVIDIA dGPU acceleration via `nullmoth 3.0`.
+A robust, fully documented, and transparent proof-of-concept Hackintosh EFI configuration for the **ASUS TUF Gaming F16 (FX607JVB)** laptop powered by Raptor Lake-H and NVIDIA dGPU acceleration via `nullmoth 3.0`, running in a dual-boot setup on a single NVMe SSD alongside Windows 11.
 
 ---
 
-## ⚙️ System Specifications / Sistem Özellikleri
+## 🔒 Security Notice
+* **SMBIOS Cleared:** To prevent tracking and Apple ID conflicts, all unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, and `ROM`) inside `config.plist` have been cleared/sanitized for public release. You must generate your own values using **GenSMBIOS** before booting.
 
-| Component / Bileşen | Specification / Donanım Detayı |
+---
+
+## ⚙️ System Specifications
+
+| Component | Specification |
 | :--- | :--- |
 | **Laptop Model** | ASUS TUF Gaming F16 (FX607JVB) |
 | **Processor (CPU)** | Intel Core 5 210H (Hybrid Architecture: P-Core + E-Core) / *Shown as "Unknown" in About This Mac* |
 | **Graphics (dGPU)** | NVIDIA GeForce RTX 3050 6GB Laptop GPU (`nullmoth 3.0`) |
 | **Memory (RAM)** | 8GB DDR5 5600MHz |
-| **Storage (SSD)** | 512GB Western Digital NVMe SSD |
+| **Storage (SSD)** | 512GB Western Digital NVMe SSD *(Shared single-disk dual-boot layout)* |
 | **Wireless / BT** | Realtek RTL8852BE Wi-Fi / Bluetooth |
-| **Operating System** | macOS Sequoia 15.8.3 (Dual-boot with Windows 11) |
+| **Operating System** | macOS Sequoia 15.8.3 dual-booted with Windows 11 on the same physical SSD |
 
 ---
 
-## 🚀 Key Features & Working Components / Çalışan Bileşenler ve Özellikler
+## 🚀 Key Features & Working Components
 
 * **Metal 3 Acceleration:** Powered by `nullmoth 3.0` framework, routing native graphics calls directly to the RTX 3050 in dGPU-only mode.
 * **Power & Thermal Management:** `AsusBridge` integration combined with Armoury Crate profile management for accurate telemetry and battery limit control.
@@ -34,7 +39,7 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 ---
 
 ## 📊 Cross-OS Benchmark Comparison (Geekbench 7.1.0)
-*Tüm testler şebeke adaptörüne takılı ve Armoury Crate **Ultimate (dGPU)** modunda gerçekleştirilmiştir.*
+*All tests were performed while plugged into AC power and with Armoury Crate set to **Ultimate (dGPU)** mode.*
 
 | Test Category / API | Windows 11 (Reference) | macOS Sequoia 15.8.3 (`nullmoth`) | Variance / Status Note |
 | :--- | :--- | :--- | :--- |
@@ -43,9 +48,23 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 | **GPU — Metal / Vulkan** | **46.827** *(Vulkan)* | **45.135** *(Metal)* | Only **%3.6** performance delta! |
 | **GPU — OpenCL** | **48.652** | **26.984** | Apple deprecated OpenCL stack overhead |
 
+> *💡 Note: Benchmark screenshots (Windows and macOS scorecards) are placed inside the repository's `screenshots/` directory and visually displayed below.*
+
+### Benchmark Screenshots
+
+#### CPU Comparison
+| Windows 11 | macOS Sequoia 15.8.3 |
+| :---: | :---: |
+| ![Windows CPU](screenshots/win11-cpu.png) | ![macOS CPU](screenshots/macos-cpu.png) |
+
+#### GPU Comparison
+| Windows 11 (Vulkan / OpenCL) | macOS Sequoia 15.8.3 (Metal / OpenCL) |
+| :---: | :---: |
+| ![Windows GPU](screenshots/win11-gpu-vulkan.png) | ![macOS GPU](screenshots/macos-gpu-metal.png) |
+
 ---
 
-## 🛠️ Minimal BIOS Settings / Minimal BIOS Ayarları
+## 🛠️ Minimal BIOS Settings
 
 To boot successfully, make sure your BIOS is configured as follows:
 
@@ -57,7 +76,7 @@ To boot successfully, make sure your BIOS is configured as follows:
 
 ---
 
-## ⚠️ Known Limitations, Quirks & Real-World Behavior / Bilinen Kısıtlamalar ve Günlük Kullanım Notları
+## ⚠️ Known Limitations, Quirks & Real-World Behavior
 
 To maintain absolute transparency for anyone building on this hardware, here are the verified real-world behaviors of this EFI configuration:
 
@@ -67,7 +86,7 @@ To maintain absolute transparency for anyone building on this hardware, here are
 * **Browser TCC & Camera Constraints:** Built-in camera permissions operate natively and smoothly in Safari, while Chromium-based browsers (Chrome/Brave) enforce strict Sandbox/TCC limits on this architecture.
 * **UI Glitches, About This Mac & Text Rendering:** Due to dGPU-only routing via `nullmoth` and non-native CPU reporting (shown as "Unknown"), UI elements, the *System Settings* panel, or *About This Mac* window may occasionally appear blank, experience rendering hiccups, or show dark text artifacts over light theme backgrounds.
 * **Chrome / Browser Rendering Flicker:** When switching between dark and light themes in Chromium-based browsers (Chrome), pages may momentarily flash or drop pixels on theme boundaries due to dGPU hardware acceleration handling.
-* **Dual-Boot Battery Charge Limit:** Because the battery charge limit (%80 cap) is handled by ASUS EC (Embedded Controller) firmware alongside software hooks, switching back and forth between Windows and macOS can occasionally reset the profile state across reboots.
+* **Dual-Boot Battery Charge Limit:** Because the battery charge limit (%80 cap) is handled by ASUS EC (Embedded Controller) firmware alongside software hooks, switching back and forth between Windows and macOS on the same single SSD environment can occasionally reset the profile state across reboots.
 
 ---
 
