@@ -9,7 +9,7 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 ---
 
 ## 🔒 Security Notice
-* **SMBIOS Cleared:** To prevent tracking and Apple ID conflicts, all unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, and `ROM`) inside `config.plist` have been cleared/sanitized for public release. You must generate your own values using **GenSMBIOS** before booting.
+* **SMBIOS Cleared:** To prevent tracking and Apple ID conflicts, all unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, and `ROM`) inside `config.plist` have been cleared/sanitized for public release. You must generate your own values using **GenSMBIOS** before booting.We recommend select the Macpro16,2 device.
 
 ---
 
@@ -41,8 +41,8 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 
 | Test Category / API | Windows 11 (Reference) | macOS Sequoia 15.8.3 (`nullmoth`) | Variance / Status Note |
 | :--- | :--- | :--- | :--- |
-| **CPU — Single-Core** | **1.854** | **1.954** | P-Core single turbo efficiency (`+5.4%`) |
-| **CPU — Multi-Core** | **8.154** | **4.469** | Hybrid E-Core scheduler limitation |
+| **CPU — Single-Core** | **1.854** | **971** | P-Core single turbo efficiency (`+5.4%`) |
+| **CPU — Multi-Core** | **8.154** | **5643** | Hybrid E-Core scheduler limitation |
 | **GPU — Metal / Vulkan** | **46.827** *(Vulkan)* | **45.135** *(Metal)* | Only **%3.6** performance delta! |
 | **GPU — OpenCL** | **48.652** | **26.984** | Apple deprecated OpenCL stack overhead |
 
