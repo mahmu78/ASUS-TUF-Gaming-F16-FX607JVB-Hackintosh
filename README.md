@@ -3,7 +3,9 @@
 
 ![macOS Sequoia](https://img.shields.io/badge/macOS-Sequoia%2015.8.3-blue) ![OpenCore](https://img.shields.io/badge/OpenCore-1.0.8-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-A documented, proof-of-concept OpenCore EFI for the **ASUS TUF Gaming F16 FX607VJB** (Intel Core 5 210H, RTX 3050 6GB Laptop GPU). macOS Sequoia runs with **E-cores enabled**, and the NVIDIA dGPU is accelerated through the **NullMoth** driver. The machine dual-boots with Windows 11 on a single NVMe SSD.
+⚠️ Daily usable, but not fully stable.
+
+A documented, community-maintained OpenCore EFI for the **ASUS TUF Gaming F16 FX607VJB** (Intel Core 5 210H, RTX 3050 6GB Laptop GPU). macOS Sequoia runs with **E-cores enabled**, and the NVIDIA dGPU is accelerated through the **NullMoth** driver. The machine dual-boots with Windows 11 on a single NVMe SSD.
 
 > **Model note:** the Core 5 210H variant is sold as **FX607VJB** (for example FX607VJB-RL136). This repository was previously titled "FX607JVB"; both spellings are kept here so the project is easy to find.
 
@@ -11,7 +13,7 @@ A documented, proof-of-concept OpenCore EFI for the **ASUS TUF Gaming F16 FX607V
 
 ## Security notice
 
-All unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, `ROM`) in `config.plist` are cleared. Generate your own values with GenSMBIOS before booting. The SMBIOS model used in this config is **[exact model name as written in config.plist]**.
+All unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, `ROM`) in `config.plist` are cleared. Generate your own values with GenSMBIOS before booting. The SMBIOS model used in this config is **[MacBookPro16,2]**.
 
 No Apple software is distributed in this repository, only the EFI folder.
 
@@ -25,7 +27,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | WhateverXe / WhateverXe Graphics | 0.8.2 / 0.4.4 (iGPU not working, see below) |
 | AsusBridge | 3.0 |
 | RTL8111 (Ethernet) | 2.4.2, see "Ethernet" |
-| BIOS | [version] |
+| BIOS | FX607VJB.338 |
 
 ## System specifications
 
@@ -84,7 +86,6 @@ Kernel -> Emulate
           Cpuid1Mask = FFFFFFFF0000FF000000000000000000
 ```
 
-[One or two sentences on why this value works or what it changes.]
 
 ## Ethernet (RTL8111)
 
@@ -118,7 +119,7 @@ Screenshots (About This Mac, CPU and GPU comparisons) are in the `screenshots/` 
 
 ## Using AsusBridge
 
-On modern ASUS laptops I use AsusBridge instead of AsusSMC, for [short reason: which feature worked / what did not work with AsusSMC].
+On modern ASUS laptops I use AsusBridge instead of AsusSMC, for because I use AsusBridge instead of AsusSMC because it provides working battery charge limits, fan telemetry and ASUS-specific controls on this model.
 
 ## License
 
