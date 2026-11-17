@@ -96,7 +96,7 @@ To maintain absolute transparency for anyone building on this hardware, here are
 ## 📜 License & Acknowledgments
 Distributed under the MIT License. Special thanks to the developers and maintainers whose work made this configuration possible:
 * **Asusbridge:https://github.com/ixboss/asus-control-macos // ** For ASUS EC telemetry, keyboard backlight, and battery charge limit integration.
-* **Realtek RTL8852BE Wifi drivers: https://github.com/FranciumOS-org/Airport_RTW89 /For enabling Wi-Fi  connectivity on macOS.
+* **Realtek RTL8852BE Wifi drivers: https://github.com/FranciumOS-org/Airport_RTW89 //**For enabling Wi-Fi  connectivity on macOS.
 * **[Acidanthera](https://github.com/acidanthera):** For OpenCore Bootloader, Lilu, VirtualSMC, WhateverGreen, and essential core kexts.
 * **Dortania:** For the comprehensive OpenCore Install Guide and Raptor Lake-H documentation.
 * **`nullmoth` Developers:** For the Metal 3 dGPU acceleration framework enabling RTX 3050 support.
