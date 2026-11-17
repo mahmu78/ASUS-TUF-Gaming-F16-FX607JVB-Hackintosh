@@ -58,7 +58,7 @@ A robust, fully documented, and transparent proof-of-concept Hackintosh EFI conf
 | ![Windows CPU](screenshots/win11-cpu.png) | ![macOS CPU](screenshots/macos-cpu.png) |
 
 #### GPU Comparison
-| Windows 11 (Vulkan / OpenCL) | macOS Sequoia 15.8.3 (Metal / OpenCL) |
+| Windows 11 (Vulkan) | macOS Sequoia 15.8.3 (Metal) |
 | :---: | :---: |
 | ![Windows GPU](screenshots/win11-gpu-vulkan.png) | ![macOS GPU](screenshots/macos-gpu-metal.png) |
 
