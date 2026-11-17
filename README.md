@@ -23,7 +23,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | NullMoth (NVIDIA driver) | 3.0 |
 | WhateverXe / WhateverXe Graphics | 0.8.2 / 0.4.4 (iGPU not working, see below) |
 | AsusBridge | 3.0 |
-| RealtekRTL8111 (Ethernet) | 2.4.2, see "Ethernet" |
+| Realtek Gigabit Ethernet(RTL8111.kext is work) | 2.4.2, see "Ethernet" |
 | BIOS | [version] |
 
 ## System specifications
