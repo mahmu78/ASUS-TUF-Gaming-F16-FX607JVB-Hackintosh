@@ -1,26 +1,25 @@
 # ASUS TUF Gaming F16 FX607JVB Hackintosh
-# Intel Core 5 210H • RTX 3050 Laptop GPU • macOS Sequoia
 
-![macOS Sequoia](https://img.shields.io/badge/macOS-Sequoia%2015.8.3-blue) ![OpenCore](https://img.shields.io/badge/OpenCore-1.0.8-green) ![License](https://img.shields.io/badge/License-MIT-lightgrey)
+**Intel Core 5 210H • RTX 3050 Laptop GPU • macOS Sequoia**
 
-⚠️ Daily usable, but not fully stable.
+⚠️ **Daily usable, but not fully stable.**
 
-A documented, community-maintained OpenCore EFI for the **ASUS TUF Gaming F16 FX607VJB** (Intel Core 5 210H, RTX 3050 6GB Laptop GPU). macOS Sequoia runs with **E-cores enabled**, and the NVIDIA dGPU is accelerated through the **NullMoth** driver. The machine dual-boots with Windows 11 on a single NVMe SSD.
+A documented, community-maintained OpenCore EFI for the ASUS TUF Gaming F16 FX607VJB (Intel Core 5 210H, RTX 3050 6GB Laptop GPU). macOS Sequoia runs with E-cores enabled, and the NVIDIA dGPU is accelerated through the NullMoth driver. The machine dual-boots with Windows 11 on a single NVMe SSD.
 
-> **Model note:** the Core 5 210H variant is sold as **FX607VJB** (for example FX607VJB-RL136). This repository was previously titled "FX607JVB"; both spellings are kept here so the project is easy to find.
+**Model note:** the Core 5 210H variant is sold as FX607VJB (for example FX607VJB-RL136). This repository was previously titled "FX607JVB"; both spellings are kept here so the project is easy to find.
 
-> **This is a personal, device-specific build.** It was tested on one laptop only. Other revisions, BIOS versions or storage layouts may behave differently. Do not copy it blindly; compare it with your own config.
+This is a personal, device-specific build. It was tested on one laptop only. Other revisions, BIOS versions or storage layouts may behave differently. Do not copy it blindly; compare it with your own config.
 
 ## Security notice
 
-All unique platform identifiers (`SystemSerialNumber`, `MLB`, `SystemUUID`, `ROM`) in `config.plist` are cleared. Generate your own values with GenSMBIOS before booting. The SMBIOS model used in this config is **[MacBookPro16,2]**.
+All unique platform identifiers (SystemSerialNumber, MLB, SystemUUID, ROM) in `config.plist` are cleared. Generate your own values with GenSMBIOS before booting. The SMBIOS model used in this config is `MacBookPro16,2`.
 
 No Apple software is distributed in this repository, only the EFI folder.
 
 ## Tested versions
 
 | Component | Version |
-| --- | --- |
+|---|---|
 | macOS | Sequoia 15.8.3 (24H241), also tested on 15.8.1 |
 | OpenCore | 1.0.8 |
 | NullMoth (NVIDIA driver) | 3.0 |
@@ -32,15 +31,15 @@ No Apple software is distributed in this repository, only the EFI folder.
 ## System specifications
 
 | Component | Specification |
-| --- | --- |
+|---|---|
 | Laptop | ASUS TUF Gaming F16 FX607VJB |
-| CPU | Intel Core 5 210H (hybrid: 4 P-cores + 4 E-cores), **E-cores enabled**; shown as "Unknown" in About This Mac |
+| CPU | Intel Core 5 210H (hybrid: 4 P-cores + 4 E-cores), E-cores enabled; shown as "Unknown" in About This Mac |
 | dGPU | NVIDIA GeForce RTX 3050 6GB Laptop GPU (NullMoth) |
-| iGPU | Intel Raptor Lake-P graphics, PCI ID `8086:A7AB`, **not working** |
+| iGPU | Intel Raptor Lake-P graphics, PCI ID 8086:A7AB, not working |
 | RAM | 8GB DDR5 5600MHz |
 | Storage | 512GB Western Digital NVMe SSD (single-disk dual boot with Windows 11) |
 | Wi-Fi / Bluetooth | Realtek RTL8852BE |
-| Ethernet | Realtek Gigabit Ethernet(RTL8111.kext worked) |
+| Ethernet | Realtek Gigabit Ethernet (RTL8111.kext worked) |
 
 ## What works
 
@@ -57,7 +56,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 ## BIOS settings
 
 | Setting | Value |
-| --- | --- |
+|---|---|
 | Secure Boot | Disabled |
 | Fast Boot | Disabled |
 | CSM | Disabled (required by NullMoth) |
@@ -67,18 +66,17 @@ No Apple software is distributed in this repository, only the EFI folder.
 | VMD Controller | Disabled (or AHCI mode if supported) |
 | CFG Lock / VT-d | Handled through OpenCore quirks |
 
-Note: The setting to switch to external GPU mode can be adjusted via the BIOS; if it is not available in the BIOS, it can be configured within Windows using Armoury Crate—please check accordingly. 
-Please check these against your own BIOS before booting; names differ between BIOS versions.
+**Note:** the dGPU-only (Ultimate) mode may be available in the BIOS; if it is not, set it in Windows with Armoury Crate. Option names differ between BIOS versions, so check these settings against your own BIOS before booting.
 
 ## E-cores enabled: the EXITBS:START freeze
 
 With E-cores enabled in BIOS, OpenCore stopped at `EXITBS:START` and macOS never started. With E-cores disabled it booted normally.
 
-**Things that did not change anything:** `cpus=1`, disabling CpuTopologyRebuild.kext, disabling the force-HT kernel patch, disabling `APIC.aml`, switching the GPU mode between dGPU-only and Standard.
+Things that did not change anything: `cpus=1`, disabling `CpuTopologyRebuild.kext`, disabling the force-HT kernel patch, disabling `APIC.aml`, switching the GPU mode between dGPU-only and Standard.
 
-**What fixed it:** a small change in the CPUID masking.
+What fixed it: a small change in the CPUID masking.
 
-```text
+```
 Kernel -> Emulate
   Before: Cpuid1Data = 55060A00000000000000000000000000
           Cpuid1Mask = FFFFFFFF000000000000000000000000
@@ -86,18 +84,17 @@ Kernel -> Emulate
           Cpuid1Mask = FFFFFFFF0000FF000000000000000000
 ```
 
-
 ## Ethernet (RTL8111)
 
-The latest `RealtekRTL8111.kext` release I downloaded did not work on macOS 15.8.3 ([symptom: no link ]). The version bundled by OpCore Simplify works. The problematic version is **3.0**.
+The latest `RealtekRTL8111.kext` release I downloaded (version 3.0) did not work on macOS 15.8.3 (symptom: no link). The version bundled by OpCore Simplify (2.4.2) works.
 
 ## Benchmarks (Geekbench 7.1.0)
 
 All tests were run on AC power with Armoury Crate set to Ultimate (dGPU) mode.
 
 | Test | Windows 11 | macOS Sequoia 15.8.3 (NullMoth) | macOS vs Windows |
-| --- | --- | --- | --- |
-| CPU, single-core | 1,854 | 971 | %91|
+|---|---|---|---|
+| CPU, single-core | 1,854 | 971 | 52% |
 | CPU, multi-core | 8,154 | 5,643 | 69% |
 | GPU, Vulkan (Windows) / Metal (macOS) | 46,827 | 45,135 | 96% (about 3.6% lower) |
 | GPU, OpenCL | 48,652 | 26,984 | 55% |
@@ -108,7 +105,7 @@ Screenshots (About This Mac, CPU and GPU comparisons) are in the `screenshots/` 
 
 ## Known limitations
 
-- **Intel iGPU (not working):** the Raptor Lake-P iGPU (`8086:A7AB`) gets no acceleration. WhateverXe 0.8.2 with WhateverXe Graphics 0.4.4 was tested, including with the dGPU disabled and in Standard GPU mode, without success. The internal display is therefore driven by the dGPU, so the laptop must stay in Ultimate / dGPU only mode.
+- **Intel iGPU (not working):** the Raptor Lake-P iGPU (8086:A7AB) gets no acceleration. WhateverXe 0.8.2 with WhateverXe Graphics 0.4.4 was tested, including with the dGPU disabled and in Standard GPU mode, without success. The internal display is therefore driven by the dGPU, so the laptop must stay in Ultimate / dGPU only mode.
 - **Deep sleep / hibernation:** entering deep sleep causes a kernel panic and a reboot (PCIe power-state mismatch under NullMoth). Use normal screen lock / display sleep.
 - **Wi-Fi on enterprise networks:** 802.1X / Eduroam networks are not supported by the RTL8852BE driver.
 - **NVIDIA HDMI / DisplayPort audio:** audio over external displays through the dGPU does not work.
@@ -119,7 +116,7 @@ Screenshots (About This Mac, CPU and GPU comparisons) are in the `screenshots/` 
 
 ## Using AsusBridge
 
-On modern ASUS laptops I use AsusBridge instead of AsusSMC, for because I use AsusBridge instead of AsusSMC because it provides working battery charge limits, fan telemetry and ASUS-specific controls on this model.
+On modern ASUS laptops I use AsusBridge instead of AsusSMC because it provides working battery charge limits, fan telemetry and ASUS-specific controls on this model.
 
 ## License
 
@@ -127,10 +124,10 @@ The configuration files in this repository are released under the MIT License. T
 
 ## Acknowledgments
 
-- [AsusBridge](https://github.com/ixboss/asus-control-macos): ASUS EC telemetry, keyboard backlight and battery charge limit.
-- [Airport_RTW89](https://github.com/FranciumOS-org/Airport_RTW89): Realtek RTL8852BE Wi-Fi on macOS.
-- [NullMoth Nvidia Driver](https://github.com/nullmoth/nvidia-macos-driver): Metal 3 acceleration for the RTX 3050.
-- [WhateverXe](https://github.com/b00t0x/WhateverXe) by b00t0x: Intel Xe iGPU work and CpuTopologyRebuild for hybrid CPUs.
-- Acidanthera: OpenCore, Lilu, VirtualSMC and other core kexts.
-- Dortania: OpenCore Install Guide.
-- OpCore Simplify: initial EFI generation.
+- **AsusBridge:** ASUS EC telemetry, keyboard backlight and battery charge limit.
+- **Airport_RTW89:** Realtek RTL8852BE Wi-Fi on macOS.
+- **NullMoth Nvidia Driver:** Metal 3 acceleration for the RTX 3050.
+- **WhateverXe** by b00t0x: Intel Xe iGPU work and CpuTopologyRebuild for hybrid CPUs.
+- **Acidanthera:** OpenCore, Lilu, VirtualSMC and other core kexts.
+- **Dortania:** OpenCore Install Guide.
+- **OpCore Simplify:** initial EFI generation.
