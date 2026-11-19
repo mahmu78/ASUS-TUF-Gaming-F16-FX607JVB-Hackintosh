@@ -110,7 +110,7 @@ Screenshots (About This Mac, CPU and GPU comparisons) are in the `screenshots/` 
 - **Wi-Fi on enterprise networks:** 802.1X / Eduroam networks are not supported by the RTL8852BE driver.
 - **NVIDIA HDMI / DisplayPort audio:** audio over external displays through the dGPU does not work.
 - **Heavy Java mods (for example Minecraft MTR, Create):** occasional stutter, likely from P-core / E-core scheduling.
-- **Browsers:** the camera works in Safari. Chromium-based browsers apply stricter sandbox / TCC limits. Chrome may flicker briefly when switching between dark and light themes.
+- **Browsers:** the camera works in Safari. Chromium-based browsers apply stricter sandbox / TCC limits. Intermittent rendering glitches and video stutters occur on VP9 and AV1 streams due to hardware video decode / Metal synchronization behavior. Forcing H.264 playback (e.g., via `h264ify` / `enhanced-h264ify`) resolves the stutter and ensures smooth playback.
 - **UI artifacts:** because the CPU is reported as "Unknown" and the display is routed through the dGPU, About This Mac or System Settings may occasionally render blank or show dark text on light backgrounds.
 - **Battery charge limit in dual boot:** the 80% limit is handled by the ASUS embedded controller, so switching between Windows and macOS can occasionally reset it.
 
