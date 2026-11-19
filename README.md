@@ -124,9 +124,10 @@ The configuration files in this repository are released under the MIT License. T
 
 ## Acknowledgments
 
-- **AsusBridge:** ASUS EC telemetry, keyboard backlight and battery charge limit.
-- **Airport_RTW89:** Realtek RTL8852BE Wi-Fi on macOS.
+- **AsusBridge(developed by ixboss):** ASUS EC telemetry, keyboard backlight and battery charge limit.
+- **Airport_RTW89(developed by FranciumOS-org):** Realtek RTL8852BE Wi-Fi on macOS.
 - **NullMoth Nvidia Driver:** Metal 3 acceleration for the RTX 3050.
+- **RTL8111.kext(developed by mieze)**:Realtek gigabit ethernet on macOS
 - **WhateverXe** by b00t0x: Intel Xe iGPU work and CpuTopologyRebuild for hybrid CPUs.
 - **Acidanthera:** OpenCore, Lilu, VirtualSMC and other core kexts.
 - **Dortania:** OpenCore Install Guide.
