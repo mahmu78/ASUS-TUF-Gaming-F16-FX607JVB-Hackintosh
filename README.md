@@ -22,7 +22,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 |---|---|
 | macOS | Sequoia 15.8.3 (24H241), also tested on 15.8.1 |
 | OpenCore | 1.0.8 |
-| NullMoth (NVIDIA driver) | 3.0 |
+| NullMoth (NVIDIA driver) | 3.1 |
 | WhateverXe / WhateverXe Graphics | 0.8.5 / 0.4.5 (iGPU working, see below) |
 | AsusBridge | 3.0 |
 | RTL8111 (Ethernet) | 2.4.2, see "Ethernet" |
