@@ -63,7 +63,7 @@ No Apple software is distributed in this repository, only the EFI folder.
 | Fast Boot | Disabled |
 | CSM | Disabled (required by NullMoth) |
 | Above 4G Decoding | Enabled (required by NullMoth) |
-| Graphics mode (BIOS / Armoury Crate) | Standard (hybrid) for the iGPU (main accelerator); Ultimate / dGPU only for NullMoth |
+| Graphics mode (BIOS / Armoury Crate) | Standard (hybrid) for the iGPU (main accelerator) +dGPU(seconds graphics) |
 | E-cores | Enabled |
 | VMD Controller | Disabled (or AHCI mode if supported) |
 | CFG Lock / VT-d | Handled through OpenCore quirks |
